@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Worm Extraction</title>
+    <title>Digital Worm Extraction Game</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Define animation for cash rolls */
@@ -14,8 +14,19 @@
         .cash-roll {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 50%;
             animation: roll 1s linear infinite;
+            font-size: 2em;
+        }
+        /* Vault area */
+        #vault {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -40,9 +51,20 @@
     </div>
     <button onclick="addMoney()">Add Money</button>
     <button onclick="window.open('digital-worm.php', '_blank')">Open Digital Worm PHP</button>
+    <div id="vault"></div>
+    <div id="eventLog"></div>
 
     <script>
         let moneyAmount = 0;
+        const vaultGoal = 1000;
+        const events = [
+            { name: 'Climatic Change', impact: -50 },
+            { name: 'Earth Pole Change', impact: -100 },
+            { name: 'Asteroid Impact', impact: -200 },
+            { name: 'Human War', impact: -150 },
+            { name: 'Economic Boom', impact: 200 },
+            { name: 'Technological Advancement', impact: 100 }
+        ];
 
         function addMoney() {
             moneyAmount += 100; // Adjust amount as needed
@@ -54,10 +76,46 @@
             cashRoll.classList.add("cash-roll");
             document.body.appendChild(cashRoll);
 
+            // Animate cash falling into the vault
+            const vault = document.getElementById("vault");
+            const cashClone = cashRoll.cloneNode(true);
+            cashClone.style.position = 'absolute';
+            cashClone.style.top = '0';
+            cashClone.style.left = '50%';
+            vault.appendChild(cashClone);
+
             // Remove the cash roll after animation ends
             cashRoll.addEventListener("animationend", () => {
                 cashRoll.remove();
             });
+
+            // Remove the cash clone after falling into the vault
+            setTimeout(() => {
+                cashClone.remove();
+            }, 1000); // Match with the duration of the animation
+
+            checkGoal();
+        }
+
+        function checkGoal() {
+            if (moneyAmount >= vaultGoal) {
+                alert("Congratulations! You've reached the vault goal!");
+            }
+        }
+
+        function randomEvent() {
+            const event = events[Math.floor(Math.random() * events.length)];
+            moneyAmount += event.impact;
+            if (moneyAmount < 0) moneyAmount = 0;
+            document.getElementById("moneyAmount").textContent = "€" + moneyAmount;
+            logEvent(event.name, event.impact);
+        }
+
+        function logEvent(name, impact) {
+            const eventLog = document.getElementById("eventLog");
+            const logEntry = document.createElement("p");
+            logEntry.textContent = `${name} occurred! Impact: ${impact >= 0 ? '+' : ''}${impact}`;
+            eventLog.appendChild(logEntry);
         }
 
         document.getElementById('wormForm').addEventListener('submit', function(event) {
@@ -79,6 +137,8 @@
             })
             .catch(error => console.error('Error:', error));
         });
+
+        setInterval(randomEvent, 5000); // Trigger random events every 5 seconds
     </script>
 </body>
 </html>

@@ -1,8 +1,12 @@
 ## 👋 Welcome!
 
+![Project Image](/project_image.jpg){align="left"}
+![Project Image Inspiration](/project_image_inspiration_image.jpg){align="right"}
+
+
 We’re thrilled to have you join our community discussions! Whether you’re a seasoned developer or just getting started, there’s a place for you here at TurboZoo. Feel free to introduce yourself, ask questions, share ideas, and engage with fellow members.
 
-Join the conversation on [GitHub Discussions](https://github.com/Kvnbbg/TurboZoo/discussions/1) or hop into our friendly Discord community for chats, camaraderie, and fun! [Join Discord](https://discord.gg/VTSQM38uZT)
+Read the free book on [Wattpad](https://pin.it/1GNIEQ8wx). Join the conversation on [GitHub Discussions](https://github.com/Kvnbbg/TurboZoo/discussions/1) or hop into our friendly Discord community for chats, camaraderie, and fun! [Join Discord](https://discord.gg/VTSQM38uZT)
 
 # TurboZoo
 

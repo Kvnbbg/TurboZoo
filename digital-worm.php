@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Function to locate the digital worm in the metaverse
     function locateWorm($data) {
-        $pattern = '/(fear|anxiety|insecurity)/i';
+        $pattern = '/(fear|anxiety|insecurity|doubt|stress|self-doubt)/i';
         preg_match_all($pattern, $data, $matches);
         return $matches[0];
     }
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $wormData = locateWorm($data);
 
         // Remove the worm from the data
-        $cleanData = preg_replace('/(fear|anxiety|insecurity)/i', '', $data);
+        $cleanData = preg_replace('/(fear|anxiety|insecurity|doubt|stress|self-doubt)/i', '', $data);
 
         // Convert worm data into recyclable metadata
         $recycledMetadata = array_map('strtoupper', $wormData);
