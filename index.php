@@ -6,19 +6,52 @@
     <title>Digital Worm Extraction Game</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Define animation for cash rolls */
-        @keyframes roll {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .cash-roll {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            animation: roll 1s linear infinite;
-            font-size: 2em;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        /* Vault area */
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
         #vault {
             width: 100px;
             height: 100px;
@@ -27,10 +60,80 @@
             margin: 20px auto;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            line-height: 100px;
+            font-size: 1.5em;
+        }
+
+        .cash-roll {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            animation: roll 1s linear infinite;
+            font-size: 2em;
+        }
+
+        @keyframes roll {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        #eventLog {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #leaderboard {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        #leaderboard h2 {
+            text-align: center;
+        }
+
+        #leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #leaderboard th, #leaderboard td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        #leaderboard th {
+            background-color: #f4f4f4;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: gold;
+            color: black;
+            margin-left: 10px;
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <div class="container">
         <h1>Digital Worm Extraction</h1>
         <div class="form-container">
@@ -45,14 +148,40 @@
             <p id="cleanedData">Cleaned Metaverse Data: </p>
             <p id="recycledMetadata">Recycled Metadata: </p>
         </div>
+        <div id="coffreFort">
+            Coffre Fort: <span id="moneyAmount">€0 cost of purification</span>
+        </div>
+        <button onclick="addMoney()">Purification</button>
+        <button onclick="window.open('digital-worm.php', '_blank')">Open Digital Safety</button>
+        <button onclick="toggleMode()">Toggle Dark/Light Mode</button>
+        <div id="vault">Vault</div>
+        <div id="eventLog"></div>
+        <div id="leaderboard">
+            <h2>Leaderboard</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <tr>
+                        <td>Player 1 <span class="badge">Champion</span></td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>Player 2</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>Player 3</td>
+                        <td>900</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div id="coffreFort">
-        Coffre Fort: <span id="moneyAmount">€0</span>
-    </div>
-    <button onclick="addMoney()">Add Money</button>
-    <button onclick="window.open('digital-worm.php', '_blank')">Open Digital Worm PHP</button>
-    <div id="vault"></div>
-    <div id="eventLog"></div>
 
     <script>
         let moneyAmount = 0;
@@ -67,16 +196,14 @@
         ];
 
         function addMoney() {
-            moneyAmount += 100; // Adjust amount as needed
+            moneyAmount += 100;
             document.getElementById("moneyAmount").textContent = "€" + moneyAmount;
 
-            // Create and animate cash rolls
             const cashRoll = document.createElement("div");
-            cashRoll.textContent = "💰"; // You can use any symbol for cash
+            cashRoll.textContent = "💰";
             cashRoll.classList.add("cash-roll");
             document.body.appendChild(cashRoll);
 
-            // Animate cash falling into the vault
             const vault = document.getElementById("vault");
             const cashClone = cashRoll.cloneNode(true);
             cashClone.style.position = 'absolute';
@@ -84,15 +211,13 @@
             cashClone.style.left = '50%';
             vault.appendChild(cashClone);
 
-            // Remove the cash roll after animation ends
             cashRoll.addEventListener("animationend", () => {
                 cashRoll.remove();
             });
 
-            // Remove the cash clone after falling into the vault
             setTimeout(() => {
                 cashClone.remove();
-            }, 1000); // Match with the duration of the animation
+            }, 1000);
 
             checkGoal();
         }
@@ -118,6 +243,12 @@
             eventLog.appendChild(logEntry);
         }
 
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+            body.classList.toggle("light-mode");
+        }
+
         document.getElementById('wormForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -138,7 +269,7 @@
             .catch(error => console.error('Error:', error));
         });
 
-        setInterval(randomEvent, 5000); // Trigger random events every 5 seconds
+        setInterval(randomEvent, 5000);
     </script>
 </body>
 </html>
