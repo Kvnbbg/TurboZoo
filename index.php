@@ -152,7 +152,6 @@
             Coffre Fort: <span id="moneyAmount">€0 cost of purification</span>
         </div>
         <button onclick="addMoney()">Purification</button>
-        <button onclick="window.open('digital-worm.php', '_blank')">Open Digital Safety</button>
         <button onclick="toggleMode()">Toggle Dark/Light Mode</button>
         <div id="vault">Vault</div>
         <div id="eventLog"></div>
