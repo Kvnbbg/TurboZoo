@@ -5,11 +5,16 @@ body {
     padding: 0;
 }
 
+div {
+    display: flex;
+    flex-direction: column;
+}
+
 .container {
     width: 50%;
-    margin: 50px auto;
+    margin: 50px;
     padding: 20px;
-    background-color: #fff;
+    background-color: whitesmoke;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -53,6 +58,11 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003c80;
+    transform: scale(1.05)
 }
 
 .results {
