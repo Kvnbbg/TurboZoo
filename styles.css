@@ -3,57 +3,71 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-}
-
-div {
-    display: flex;
-    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    width: 50%;
-    margin: 50px;
+    max-width: 800px;
+    margin: 50px auto;
     padding: 20px;
-    background-color: whitesmoke;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1, h2 {
     text-align: center;
+    margin: 20px 0;
+}
+
+h1 {
+    border-bottom: 2px solid #f66151;
+}
+
+h1:hover {
+    border-bottom-color: #e01b24;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .form-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+    background-image: url('book.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    resize: none;
+    margin-bottom: 10px;
+    font-size: 1em;
+    resize: vertical;
 }
 
 button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
     border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+    color: #fff;
 }
 
 button:hover {
@@ -62,7 +76,98 @@ button:hover {
 
 button:active {
     background-color: #003c80;
-    transform: scale(1.05)
+    transform: scale(1.05);
+}
+
+#vault {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    line-height: 100px;
+    font-size: 1.5em;
+}
+
+.cash-roll {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    animation: roll 1s linear infinite;
+    font-size: 2em;
+}
+
+@keyframes roll {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+#eventLog {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#leaderboard {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#leaderboard h2 {
+    text-align: center;
+}
+
+#leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#leaderboard th, #leaderboard td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#leaderboard th {
+    background-color: #f4f4f4;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: gold;
+    color: black;
+    margin-left: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .results {
@@ -83,27 +188,6 @@ button:active {
     font-weight: bold;
 }
 
-/* Vault area */
-#vault {
-    width: 100px;
-    height: 100px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    margin: 20px auto;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Event log */
-#eventLog {
-    width: 50%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* Notification style */
 .notification {
     position: fixed;
     bottom: 20px;
