@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
+    color: #333;
 }
 
 .container {
@@ -13,6 +14,13 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #4caf50;
+    color: white;
 }
 
 h1, h2 {
@@ -28,6 +36,22 @@ h1:hover {
     border-bottom-color: #e01b24;
 }
 
+.result-section {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.info-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #eaf7ea;
+    border-radius: 5px;
+}
+
 a {
     text-decoration: none;
     color: #007bff;
@@ -35,6 +59,13 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
 }
 
 .form-container {
@@ -57,7 +88,14 @@ textarea {
     resize: vertical;
 }
 
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 button {
+    flex: 1;
     display: block;
     width: 100%;
     padding: 10px;
@@ -68,6 +106,8 @@ button {
     transition: background-color 0.3s;
     background-color: #007bff;
     color: #fff;
+    cursor: pointer;
+    margin: 20px 0;
 }
 
 button:hover {
@@ -77,6 +117,10 @@ button:hover {
 button:active {
     background-color: #003c80;
     transform: scale(1.05);
+}
+
+button:before {
+    background-color: #45a049;
 }
 
 #vault {
@@ -170,6 +214,24 @@ label {
     font-weight: bold;
 }
 
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+.error {
+    background-color: #f44336;
+    color: white;
+}
+
 .results {
     background-color: #e9ecef;
     padding: 20px;
@@ -200,3 +262,25 @@ label {
     font-size: 14px;
     z-index: 1000;
 }
+
+/* Pop Effect Style */
+.pop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+}
+
+.pop.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+.pop.hidden {
+    display: none;
+}
+
