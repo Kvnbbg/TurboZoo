@@ -1,7 +1,6 @@
 # 🚀 Welcome to TurboZoo!
 
 ![Project Image](project_image.jpg)  
-![Project Image Inspiration](project_image_inspiration_image.jpg)
 
 Welcome to **TurboZoo**, an innovative web application designed to simulate the extraction and transformation of digital data. Whether you are a developer exploring interactive web apps or someone curious about how algorithms process data, you are in the right place!
 
@@ -39,7 +38,7 @@ The creation of TurboZoo is part of a larger vision—exploring how simple algor
 
 Below is a placeholder for a screen capture or diagram that breaks down how TurboZoo works:
 
-![How the App Works](how_it_works_placeholder.jpg)
+![How the App Works](screenshot.png)
 
 This visual will help you understand the app’s core functionality and how the algorithms work together to create a fun yet educational experience. 
 
